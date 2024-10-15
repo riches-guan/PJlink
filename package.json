@@ -1,13 +1,13 @@
 {
-  "name": "node-red-contrib-pjlink",
+  "name": "pjlink",
   "version": "1.0.4",
-  "description": "A PJLink node for Node-RED",
+  "description": "PJLink",
   "dependencies": {
     "pjlink": "0.2.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/natcl/node-red-contrib-pjlink.git"
+    "url": "https://github.com/riches-guan/PJlink.git"
   },
   "keywords": [
     "node-red",
