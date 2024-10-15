@@ -1,10 +1,10 @@
 # node-red-contrib-pjlink
-A PJLink node for Node-RED
+PJLink node
 
 ## Installation
 
 ```bash
-npm install node-red-contrib-pjlink
+npm pjlink
 ```
 
 ## Usage
