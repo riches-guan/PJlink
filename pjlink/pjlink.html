@@ -1,0 +1,87 @@
+<!--
+  Copyright 2015 Nathanaël Lécaudé
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('pjlink',{
+        category: 'network-output',
+        color: '#6293FE',
+        defaults: {
+            ip: {value:"", required: false},
+            port: {value:"", required: false},
+            name: {value:""}
+        },
+        credentials: {
+            password: {type:"password"}
+        },
+        inputs:1,
+        outputs:2,
+        icon: "light.png",
+        label: function() {
+            return this.name||"pjlink";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="pjlink">
+    <div class="form-row">
+        <label for="node-input-ip"><i class="fa fa-globe"></i> IP地址</label>
+        <input type="text" id="node-input-ip" placeholder="IP">
+    </div>
+    <div class="form-row">
+        <label for="node-input-port"><i class="fa fa-random"></i> 端口号</label>
+        <input type="text" id="node-input-port" placeholder="4352">
+    </div>
+    <div class="form-row">
+        <label for="node-input-password"><i class="fa fa-lock"></i> 密码</label>
+        <input type="password" id="node-input-password">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> 名称</label>
+        <input type="text" id="node-input-name" placeholder="名称">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="pjlink">
+    <p>A node to control projectors supporting the PJLink protocol.<br/>
+    <p>You can send the following commands as a text string in <code>msg.payload</code></p>
+
+    <ul>
+    <li>on</li>
+    <li>off</li>
+    <li>muteon</li>
+    <li>muteoff</li>
+    <li>getmute</li>
+    <li>getname</li>
+    <li>getmanufacturer</li>
+    <li>getmodel</li>
+    <li>getlamps</li>
+    <li>getinputs</li>
+    <li>getinput</li>
+    <li>getinfo</li>
+    <li>getpowerstate</li>
+    <li>getclass</li>
+    <li>geterrors</li>
+    </ul>
+
+    <p>You can also set the inputs by sending this object as <code>msg.payload</code></p>
+
+    <p><code>{"source": 3, "channel": 3}</code></p>
+    <p>PJLink specfic errors will be sent to the second output.<p>
+    <p>You can connect to multiple projectors with the same object by specifying <code>msg.host</code>, <code>msg.port</code> and <code>msg.password</code>
+    In this mode the status will not be shown.
+    </p>
+    <p>See <a href="http://flows.nodered.org/flow/f9b28307c3841f6ef1e6" target="_new">this flow </a>for an example of all the commands.<p>
+</script>
